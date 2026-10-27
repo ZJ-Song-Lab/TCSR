@@ -11,6 +11,8 @@ files.
 
 > Paper link and citation entry will be added upon acceptance.
 
+![TCSR overview](figures/overview.jpg)
+
 ## Overview
 
 TCSR is a post-training quantization (PTQ) method for DETR-family detectors
@@ -59,7 +61,7 @@ AP (COCO-style, held-out split) for the representative checkpoint pairs
 tcsr/                 core library (models, quant, matching, losses,
                       calibration pipeline, evaluation, diagnostics, stats,
                       deployment helpers) -- 19 modules
-tools/                command-line entry points (11):
+tools/                command-line entry points (12):
                         calibration_manifest.py  draw calibration image list
                         calibrate.py             Stage 1 + variant table
                         evaluate.py              AP evaluation of a model list
@@ -70,16 +72,19 @@ tools/                command-line entry points (11):
                         export_onnx.py           ONNX export (+ closure check)
                         build_engine.py          TensorRT engine builder
                         benchmark.py             latency/throughput/power/energy
+                        operator_inventory.py    per-operator bit-width inventory
                         common.py                shared helpers
 scripts/              drivers:
                         smoke.py                 end-to-end toy smoke test
                         reproduce.py             the paper's full protocol
                         make_split_manifests.py  split manifest generation
+                        plot_figures.py          regenerate the paper's data figures
 configs/              experiment configs (4) + bit profiles (4)
 manifests/            datasets.json / checkpoints.json / seeds.json,
                       split manifests (manifests/splits/)
 results/              the paper's 16 result tables as CSV
-tests/                203 pytest tests (15 files)
+figures/              the paper's six figures (archived copies)
+tests/                219 pytest tests (16 files)
 outputs/              run artifacts (git-ignored)
 exports/              ONNX exports and engines (git-ignored)
 ```
@@ -271,6 +276,12 @@ Notes, faithfully stated:
 - `tools/benchmark.py` runs both ONNXRuntime (`--backend ort`) and TensorRT
   (`--backend trt`) backends and appends rows in the `tab_deployment.csv`
   schema; every protocol parameter can be overridden on the CLI.
+- `tools/operator_inventory.py` dumps the per-operator bit-width inventory of
+  any exportable model (fake-quant bits per operator plus the matching
+  native-engine format), with the same `--model` specifiers as
+  `tools/export_onnx.py`; `--output` writes a CSV plus a provenance sidecar.
+
+![Deployed efficiency](figures/tcsr_deployed_efficiency.png)
 
 ## Results
 
@@ -298,15 +309,45 @@ The paper's tables are archived under `results/` (one CSV per table):
 `tests/test_results.py` re-derives the paper's aggregation relations
 (throughput/energy identities, delta columns) directly from these files.
 
+## Figures
+
+The paper's six figures are archived under `figures/`:
+
+| File | Figure |
+|---|---|
+| `overview.jpg` | method overview (target--source isolation, two-stage calibration) |
+| `matching_strategies.jpg` | comparison of matching strategies |
+| `residual_kernel_comparison.jpg` | residual kernel for unmatched queries |
+| `tcsr_paired_ap_gains.png` | paired AP gains of the prespecified contrasts |
+| `stratified_mechanism_evidence.png` | gap-stratified mechanism evidence (3 x 3 cells) |
+| `tcsr_deployed_efficiency.png` | deployed efficiency (AP / latency / energy / memory) |
+
+The three data figures are regenerated with `scripts/plot_figures.py`
+(`--figures paired,deployed,stratified`):
+
+```bash
+# paired AP gains and deployed efficiency read the archived CSVs directly
+python scripts/plot_figures.py --results-dir results --output-dir outputs/figures
+
+# optional: 95% CIs on the paired-gain figure, from a tools/method_comparison.py
+# CSV (one per setting, as produced with --csv)
+python scripts/plot_figures.py --contrast-csv outputs/hrsid_rtdetr/comparison.csv
+
+# the stratified figure reads the diagnostics JSON written by tools/diagnostics.py
+python scripts/plot_figures.py --figures stratified \
+    --stratified-json outputs/hrsid_rtdetr/HR-02/seed512101/diagnostics.json
+```
+
 ## Tests
 
 ```bash
 pytest
 ```
 
-203 tests cover the quantizer arithmetic, block/set losses, matching,
+219 tests cover the quantizer arithmetic, block/set losses, matching,
 variant table, calibration pipeline, evaluation, diagnostics, statistics,
-deployment helpers, and the archived result tables. Deployment tests that
+deployment helpers, figure/plotting helpers, the operator inventory, and the
+archived result tables. Deployment tests that
 need TensorRT/NVML degrade to import/availability checks when the packages
 are absent.
 

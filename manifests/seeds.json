@@ -1,0 +1,40 @@
+{
+  "_description": [
+    "Seed records for the paper's repeated-calibration protocol.",
+    "Every calibration draw has a setting-local manifest identifier, an",
+    "image list, a calibration seed, and an optimization seed; seed",
+    "namespaces are disjoint across checkpoint pairs and settings",
+    "(paper, Table 'provenance audit').",
+    "",
+    "Convention implemented by this release:",
+    "  calibration_seed = draw seed  -> tools/calibration_manifest.py",
+    "                                 (image-list sampling)",
+    "  optimization_seed = draw seed + 500000 -> tools/calibrate.py --seed",
+    "",
+    "Seed ranges for the representative pairs (HR-01/02/03, SS-01,",
+    "CR-01, CD-01) are the paper's namespaces.  The B/G replication pairs",
+    "SS-02/03, CR-02/03, and CD-02/03 continue the same per-setting",
+    "hundred-offset pattern with disjoint namespaces."
+  ],
+  "convention": {
+    "draws_per_pair": 20,
+    "calibration_seed_offset": 0,
+    "optimization_seed_offset": 500000,
+    "paired_within_pair": true,
+    "disjoint_across_pairs": true
+  },
+  "pairs": {
+    "HR-01": {"setting": "hrsid_rtdetr", "seeds_start": 12001, "seeds_end": 12020, "source": "paper"},
+    "HR-02": {"setting": "hrsid_rtdetr", "seeds_start": 12101, "seeds_end": 12120, "source": "paper"},
+    "HR-03": {"setting": "hrsid_rtdetr", "seeds_start": 12201, "seeds_end": 12220, "source": "paper"},
+    "SS-01": {"setting": "ssdd_rtdetr", "seeds_start": 22001, "seeds_end": 22020, "source": "paper"},
+    "SS-02": {"setting": "ssdd_rtdetr", "seeds_start": 22101, "seeds_end": 22120, "source": "release convention"},
+    "SS-03": {"setting": "ssdd_rtdetr", "seeds_start": 22201, "seeds_end": 22220, "source": "release convention"},
+    "CR-01": {"setting": "coco_rtdetr", "seeds_start": 32001, "seeds_end": 32020, "source": "paper"},
+    "CR-02": {"setting": "coco_rtdetr", "seeds_start": 32101, "seeds_end": 32120, "source": "release convention"},
+    "CR-03": {"setting": "coco_rtdetr", "seeds_start": 32201, "seeds_end": 32220, "source": "release convention"},
+    "CD-01": {"setting": "coco_defdetr", "seeds_start": 42001, "seeds_end": 42020, "source": "paper"},
+    "CD-02": {"setting": "coco_defdetr", "seeds_start": 42101, "seeds_end": 42120, "source": "release convention"},
+    "CD-03": {"setting": "coco_defdetr", "seeds_start": 42201, "seeds_end": 42220, "source": "release convention"}
+  }
+}

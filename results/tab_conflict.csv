@@ -1,0 +1,5 @@
+component,pr_kappa_negative,median_kappa,zero_norm_count
+classification,0.184,0.410,112
+l1_box,0.229,0.330,487
+giou_box,0.271,0.290,691
+combined,0.213,0.370,74

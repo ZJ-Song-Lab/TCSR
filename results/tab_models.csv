@@ -1,0 +1,5 @@
+setting,teacher_backbone,student_backbone,teacher_ap,student_ap,representative_pair,quantization_profile,checkpoint_pairs,draws_per_pair
+HRSID/RT-DETR,R101,R18,66.10,63.30,HR-02,decoder W4A8 with remaining supported operators W8A8,HR-01; HR-02; HR-03,20
+SSDD/RT-DETR,R50,R18,63.18,60.70,SS-01,same operator policy,SS-01; SS-02; SS-03,20
+COCO/RT-DETR,R101,R18,50.12,46.50,CR-01,same operator policy,CR-01; CR-02; CR-03,20
+COCO/DefDETR,R101,R50,49.06,45.40,CD-01,matched effective policy,CD-01; CD-02; CD-03,20

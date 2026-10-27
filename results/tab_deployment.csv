@@ -1,0 +1,7 @@
+measurement_boundary,model,latency_p50_ms,latency_p95_ms,throughput_img_s,power_w,energy_j_per_image,peak_memory_gib,sd_latency_p50_ms,sd_latency_p95_ms,sd_throughput_img_s,sd_energy_j_per_image
+model_only,tensorrt_fp16_P,9.84,10.68,101.6,72.42,0.713,2.31,0.049,0.050,0.58,0.009
+model_only,tensorrt_B,5.90,6.45,169.4,63.95,0.378,1.18,,,
+model_only,tensorrt_G,5.91,6.46,169.2,64.10,0.379,1.18,0.038,0.048,0.78,0.003
+end_to_end,tensorrt_fp16_P,10.51,11.54,95.2,73.10,0.768,2.46,0.064,0.069,0.67,0.011
+end_to_end,tensorrt_B,6.60,7.34,151.5,64.75,0.427,1.31,,,
+end_to_end,tensorrt_G,6.61,7.36,151.2,64.90,0.429,1.31,0.051,0.062,0.91,0.004

@@ -1,0 +1,6 @@
+{
+  "base": "../coco_rtdetr.json",
+  "name": "coco_rtdetr_w4a4",
+  "quant_profile": "w4a4",
+  "variants": ["B", "C_Q", "G"]
+}

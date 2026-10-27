@@ -1,0 +1,5 @@
+setting,pair,ap_t,ap_p,ap_q0,ap_b,ap_g,ap_t_minus_ap_p,ap_p_minus_ap_q0,ap_b_minus_ap_q0,ap_g_minus_ap_b,gap_recovery_pct
+HRSID/RT-DETR,HR-02,66.10,63.30,59.82,61.91,63.15,2.80,3.48,2.09,1.24,89.2
+SSDD/RT-DETR,SS-01,63.18,60.70,56.93,58.82,60.31,2.48,3.77,1.89,1.49,79.3
+COCO/RT-DETR,CR-01,50.12,46.50,43.52,45.08,46.16,3.62,2.98,1.56,1.08,76.1
+COCO/DefDETR,CD-01,49.06,45.40,42.30,44.01,45.02,3.66,3.10,1.71,1.01,72.7

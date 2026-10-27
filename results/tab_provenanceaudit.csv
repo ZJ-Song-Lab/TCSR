@@ -1,0 +1,5 @@
+setting,draw_manifests,draws_per_method,total_method_rows,seed_namespace,shared_randomness_policy
+HRSID/RT-DETR,60,60,300,HR-01:12001-12020; HR-02:12101-12120; HR-03:12201-12220,paired within pair; disjoint across pairs
+SSDD/RT-DETR,20,20,100,SS-01:22001-22020,paired within checkpoint; independent SAR namespace
+COCO/RT-DETR,20,20,100,CR-01:32001-32020,fixed image list; method-coupled optimization seeds
+COCO/DefDETR,20,20,100,CD-01:42001-42020,independent from COCO/RT-DETR

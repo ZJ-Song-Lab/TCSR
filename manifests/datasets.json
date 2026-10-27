@@ -1,0 +1,97 @@
+{
+  "_description": [
+    "Dataset provenance for the TCSR paper: official sources, the paper's",
+    "splits, and the expected on-disk layout.  The code never downloads",
+    "datasets itself; place each archive under data/ as described below.",
+    "Split manifests (image-id lists) and the duplicate audit are part of",
+    "the reproducibility record (manifests/splits/)."
+  ],
+  "datasets": {
+    "hrsid": {
+      "task": "SAR ship detection",
+      "official_source": "https://github.com/chaozhong2010/HRSID",
+      "citation": "S. Wei, X. Zeng, Q. Qu, M. Wang, H. Su, and S. Shi, HRSID: A high-resolution SAR images dataset for ship detection and instance segmentation, IEEE Access 8 (2020) 120234-120254",
+      "images_total": 5604,
+      "paper_split": {
+        "train": 3000,
+        "dev": 642,
+        "test": 1962,
+        "note": "Parent scenes and crops remain within one split."
+      },
+      "expected_layout": {
+        "data_root/hrsid/train/annotation.json": "COCO-format train split",
+        "data_root/hrsid/train/*.png": "train images",
+        "data_root/hrsid/val/annotation.json": "COCO-format dev split (642 images)",
+        "data_root/hrsid/test/annotation.json": "COCO-format held-out split (1962 images)"
+      }
+    },
+    "ssdd": {
+      "task": "SAR ship detection",
+      "official_source": "https://github.com/TianwenZhang0825/Official-SSDD",
+      "citation": "J. Li, C. Qu, and J. Shao, Ship detection in SAR images based on an improved faster R-CNN, Proc. CSAE; official release: T. Zhang et al., Remote Sensing 13(18) (2021) 3690",
+      "images_total": 1160,
+      "paper_split": {
+        "train": 800,
+        "dev": 128,
+        "test": 232,
+        "note": "Scene-grouped split: all crops of one scene stay in one split."
+      },
+      "expected_layout": {
+        "data_root/ssdd/train/annotation.json": "COCO-format train split",
+        "data_root/ssdd/val/annotation.json": "COCO-format dev split (128 images)",
+        "data_root/ssdd/test/annotation.json": "COCO-format held-out split (232 images)"
+      }
+    },
+    "coco": {
+      "task": "multi-class object detection",
+      "official_source": "https://cocodataset.org/",
+      "download_images": "http://images.cocodataset.org/zips/train2017.zip, http://images.cocodataset.org/zips/val2017.zip",
+      "download_annotations": "http://images.cocodataset.org/annotations/annotations_trainval2017.zip",
+      "citation": "T.-Y. Lin et al., Microsoft COCO: Common objects in context, ECCV 2014",
+      "paper_split": {
+        "dev": "5000-image subset of train2017 (manifests/splits/coco_dev.json)",
+        "heldout": "val2017 (5000 images)"
+      },
+      "expected_layout": {
+        "data_root/coco/train2017/annotation.json": "instances_train2017.json (renamed or symlinked)",
+        "data_root/coco/train2017/*.jpg": "train2017 images",
+        "data_root/coco/val2017/annotation.json": "instances_val2017.json (renamed or symlinked)",
+        "data_root/coco/val2017/*.jpg": "val2017 images"
+      }
+    }
+  },
+  "splits": {
+    "directory": "manifests/splits/",
+    "format": "JSON array of image ids (subset materialization, see tools/common.py:load_image_id_manifest)",
+    "files": {
+      "hrsid_train.json": "3000 ids",
+      "hrsid_val.json": "642 ids (dev)",
+      "hrsid_test.json": "1962 ids (held-out)",
+      "ssdd_train.json": "800 ids",
+      "ssdd_val.json": "128 ids (dev)",
+      "ssdd_test.json": "232 ids (held-out)",
+      "coco_dev.json": "5000 train2017 ids (development subset)",
+      "coco_val2017.json": "5000 val2017 ids (held-out)"
+    },
+    "duplicate_audit": "tools/audit_splits.py reports cross-split overlap (must be zero)"
+  },
+  "calibration": {
+    "budget": {
+      "sar_images": 512,
+      "coco_images": 1024
+    },
+    "source_split": {
+      "hrsid": "train",
+      "ssdd": "train",
+      "coco": "train2017"
+    },
+    "policy": [
+      "One fixed image list per (checkpoint pair, draw seed); the same",
+      "draw manifest is shared by all methods within a checkpoint pair.",
+      "Generate with tools/calibration_manifest.py; seed namespaces are",
+      "disjoint across checkpoint pairs and settings (manifests/seeds.json)."
+    ],
+    "directory": "manifests/calibration/"
+  },
+  "licenses": "Dataset licenses and usage conditions are preserved in the released manifests and documentation (see the paper's Ethics Declaration)."
+}

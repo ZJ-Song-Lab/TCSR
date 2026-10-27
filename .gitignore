@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Experiment outputs (regenerated, not tracked)
+runs/
+outputs/
+exports/
+work_dirs/
+*.onnx
+*.engine
+*.plan
+*.pth
+*.pt
+*.ckpt
+*.log
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large data must be provided by the manifests (see manifests/datasets.json)
+data/
+checkpoints/

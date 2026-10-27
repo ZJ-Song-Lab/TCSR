@@ -1,0 +1,4 @@
+setting,checkpoint_pair,ap_B,ap_G,g_minus_b,n_draws
+HRSID/RT-DETR,HR-01,61.76,63.09,1.33,20
+HRSID/RT-DETR,HR-02,61.91,63.15,1.24,20
+HRSID/RT-DETR,HR-03,61.92,63.28,1.36,20

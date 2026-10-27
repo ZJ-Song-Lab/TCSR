@@ -1,0 +1,154 @@
+{
+  "_description": [
+    "Teacher/student checkpoint manifest.  Pair identifiers HR-01/02/03,",
+    "SS-01/02/03, CR-01/02/03, and CD-01/02/03 map one-to-one to the",
+    "corresponding teacher and student checkpoints (paper, Table 2).",
+    "",
+    "The teacher and student weights are distilled detection models",
+    "trained by the authors; each pair is independently trained.  Download",
+    "the release archive and unpack it into checkpoints/ (git-ignored):",
+    "",
+    "    RELEASE_URL -> checkpoints/{PAIR}_teacher.pt, {PAIR}_student.pt",
+    "",
+    "AP values are the single held-out evaluations of the representative",
+    "pairs reported in the paper (Table 2); replication pairs are reported",
+    "pair by pair in the results tables."
+  ],
+  "release": {
+    "provider": "github",
+    "base_url": "https://github.com/ZJ-Song-Lab/TCSR/releases/download/checkpoints",
+    "archive": "tcsr_checkpoints.zip",
+    "note": "Public repository: https://github.com/ZJ-Song-Lab/TCSR ; record sha256 of each file after upload."
+  },
+  "upstream_pretrained": {
+    "rtdetr": {
+      "repo": "https://github.com/lyuwenyu/RT-DETR",
+      "note": "Official RT-DETR code and pre-trained models (R101/R50/R18 backbones, COCO); the paper's teachers/students are fine-tuned and distilled from these."
+    },
+    "defdetr": {
+      "repo": "https://github.com/fundamentalvision/Deformable-DETR",
+      "note": "Official Deformable DETR implementation; pass --repo-path to tools/calibrate.py so MultiScaleDeformableAttention is built from this repo."
+    }
+  },
+  "pairs": {
+    "HR-01": {
+      "setting": "hrsid_rtdetr",
+      "model": "rtdetr",
+      "teacher_backbone": "R101",
+      "student_backbone": "R18",
+      "role": "replication pair",
+      "teacher": "checkpoints/HR-01_teacher.pt",
+      "student": "checkpoints/HR-01_student.pt"
+    },
+    "HR-02": {
+      "setting": "hrsid_rtdetr",
+      "model": "rtdetr",
+      "teacher_backbone": "R101",
+      "student_backbone": "R18",
+      "role": "representative pair",
+      "teacher_ap": 66.10,
+      "student_ap": 63.30,
+      "teacher": "checkpoints/HR-02_teacher.pt",
+      "student": "checkpoints/HR-02_student.pt"
+    },
+    "HR-03": {
+      "setting": "hrsid_rtdetr",
+      "model": "rtdetr",
+      "teacher_backbone": "R101",
+      "student_backbone": "R18",
+      "role": "replication pair",
+      "teacher": "checkpoints/HR-03_teacher.pt",
+      "student": "checkpoints/HR-03_student.pt"
+    },
+    "SS-01": {
+      "setting": "ssdd_rtdetr",
+      "model": "rtdetr",
+      "teacher_backbone": "R50",
+      "student_backbone": "R18",
+      "role": "representative pair",
+      "teacher_ap": 63.18,
+      "student_ap": 60.70,
+      "teacher": "checkpoints/SS-01_teacher.pt",
+      "student": "checkpoints/SS-01_student.pt"
+    },
+    "SS-02": {
+      "setting": "ssdd_rtdetr",
+      "model": "rtdetr",
+      "teacher_backbone": "R50",
+      "student_backbone": "R18",
+      "role": "replication pair (B/G)",
+      "teacher": "checkpoints/SS-02_teacher.pt",
+      "student": "checkpoints/SS-02_student.pt"
+    },
+    "SS-03": {
+      "setting": "ssdd_rtdetr",
+      "model": "rtdetr",
+      "teacher_backbone": "R50",
+      "student_backbone": "R18",
+      "role": "replication pair (B/G)",
+      "teacher": "checkpoints/SS-03_teacher.pt",
+      "student": "checkpoints/SS-03_student.pt"
+    },
+    "CR-01": {
+      "setting": "coco_rtdetr",
+      "model": "rtdetr",
+      "teacher_backbone": "R101",
+      "student_backbone": "R18",
+      "role": "representative pair",
+      "teacher_ap": 50.12,
+      "student_ap": 46.50,
+      "teacher": "checkpoints/CR-01_teacher.pt",
+      "student": "checkpoints/CR-01_student.pt"
+    },
+    "CR-02": {
+      "setting": "coco_rtdetr",
+      "model": "rtdetr",
+      "teacher_backbone": "R101",
+      "student_backbone": "R18",
+      "role": "replication pair (B/G)",
+      "teacher": "checkpoints/CR-02_teacher.pt",
+      "student": "checkpoints/CR-02_student.pt"
+    },
+    "CR-03": {
+      "setting": "coco_rtdetr",
+      "model": "rtdetr",
+      "teacher_backbone": "R101",
+      "student_backbone": "R18",
+      "role": "replication pair (B/G)",
+      "teacher": "checkpoints/CR-03_teacher.pt",
+      "student": "checkpoints/CR-03_student.pt"
+    },
+    "CD-01": {
+      "setting": "coco_defdetr",
+      "model": "defdetr",
+      "teacher_backbone": "R101",
+      "student_backbone": "R50",
+      "role": "representative pair",
+      "teacher_ap": 49.06,
+      "student_ap": 45.40,
+      "teacher": "checkpoints/CD-01_teacher.pt",
+      "student": "checkpoints/CD-01_student.pt",
+      "repo_path": "checkpoints/Deformable-DETR"
+    },
+    "CD-02": {
+      "setting": "coco_defdetr",
+      "model": "defdetr",
+      "teacher_backbone": "R101",
+      "student_backbone": "R50",
+      "role": "replication pair (B/G)",
+      "teacher": "checkpoints/CD-02_teacher.pt",
+      "student": "checkpoints/CD-02_student.pt",
+      "repo_path": "checkpoints/Deformable-DETR"
+    },
+    "CD-03": {
+      "setting": "coco_defdetr",
+      "model": "defdetr",
+      "teacher_backbone": "R101",
+      "student_backbone": "R50",
+      "role": "replication pair (B/G)",
+      "teacher": "checkpoints/CD-03_teacher.pt",
+      "student": "checkpoints/CD-03_student.pt",
+      "repo_path": "checkpoints/Deformable-DETR"
+    }
+  }
+}

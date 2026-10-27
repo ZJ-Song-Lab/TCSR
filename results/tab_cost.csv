@@ -1,0 +1,5 @@
+phase,method,teacher_forwards,student_forwards,quantized_forwards,backwards,updates,time,peak_memory_gib
+calibration_cache,G_tcsr,512,512,0,0,0,3.8 min,9.4
+stage1,all_controls,0,576000,576000,576000,72000,4.63 h,17.8
+stage2,B_student_only,0,64000,64000,64000,8000,1.17 h,16.2
+stage2,G_tcsr,0,64000,64000,64000,8000,1.29 h,16.7

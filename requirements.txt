@@ -1,0 +1,21 @@
+# TCSR (Teacher-Corroborated Student Set Reconstruction)
+# Core dependencies (CPU or CUDA build of torch both work)
+torch>=2.0
+numpy>=1.24
+scipy>=1.10
+pandas>=2.0
+matplotlib>=3.7
+tqdm>=4.65
+pillow>=10.0
+
+# Model adapters (required only for real RT-DETR / Deformable DETR checkpoints)
+# transformers>=4.40
+
+# Deployment (ONNX / TensorRT export and benchmarking)
+# onnx>=1.16.1
+# onnxruntime>=1.18
+# tensorrt>=10.3.0
+# pynvml>=11.5
+
+# Development
+# pytest>=7.0

@@ -1,0 +1,6 @@
+{
+  "base": "../coco_rtdetr.json",
+  "name": "coco_rtdetr_w8a8",
+  "quant_profile": "w8a8",
+  "variants": ["B", "C_Q", "G"]
+}

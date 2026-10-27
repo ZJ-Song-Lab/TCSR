@@ -1,0 +1,15 @@
+setting,method,bits,ap,ap50,ap75,ap_s,delta_ap_vs_b
+HRSID/RT-DETR,full_precision_P,FP,63.30,91.20,71.80,47.60,
+HRSID/RT-DETR,common_block,mixed,59.82,87.10,67.20,42.10,
+HRSID/RT-DETR,development_selected_ptq,mixed,61.39,88.70,69.10,44.70,
+HRSID/RT-DETR,B_student_only,mixed,61.91,89.30,69.80,45.50,0.00
+HRSID/RT-DETR,G_tcsr,mixed,63.15,90.78,71.48,47.28,1.24
+SSDD/RT-DETR,full_precision_P,FP,60.70,90.10,67.50,44.30,
+SSDD/RT-DETR,B_student_only,mixed,58.82,87.60,65.10,41.70,0.00
+SSDD/RT-DETR,G_tcsr,mixed,60.31,89.63,67.05,43.78,1.49
+COCO/RT-DETR,full_precision_P,FP,46.50,64.80,50.30,29.10,
+COCO/RT-DETR,B_student_only,mixed,45.08,63.30,48.50,27.40,0.00
+COCO/RT-DETR,G_tcsr,mixed,46.16,64.42,49.91,28.66,1.08
+COCO/DefDETR,full_precision_P,FP,45.40,63.20,49.00,27.40,
+COCO/DefDETR,B_student_only,mixed,44.01,61.80,47.50,25.90,0.00
+COCO/DefDETR,G_tcsr,mixed,45.02,62.82,48.61,27.03,1.01

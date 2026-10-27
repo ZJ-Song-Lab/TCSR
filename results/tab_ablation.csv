@@ -1,0 +1,11 @@
+variant_id,variant,ap,delta_vs_b,g_minus_variant,ci95_low,ci95_high,holm_p
+A,block_only,59.82,-2.09,3.33,,,
+B,complete_student_only,61.91,0.00,1.24,1.186,1.294,<0.001
+C,count_mass_matched_P_proxy,62.03,0.12,1.12,,,
+C_Q,gQ_ranked_budget_matched,62.41,0.50,0.74,0.690,0.789,<0.001
+D,corroborated_subset_uniform,62.20,0.29,0.95,,,
+E,corroboration_only,62.48,0.57,0.67,,,
+F,priority_only,62.34,0.43,0.81,,,
+G,full_tcsr,63.15,1.24,0.00,,,reference
+H,shuffled_evidence,62.00,0.09,1.15,1.106,1.194,<0.001
+I,direct_teacher_valued,61.72,-0.19,1.43,1.372,1.491,<0.001
